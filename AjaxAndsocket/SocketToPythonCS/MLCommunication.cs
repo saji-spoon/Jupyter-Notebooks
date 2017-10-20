@@ -9,7 +9,7 @@ namespace SocketToPythonCS
 {
     public class MLCommunication 
     {
-        static string TestCommunication(int port, string data)
+        public static string TestCommunication(int port, string data)
         {
             TcpClient client = new TcpClient("localhost", port);
 
@@ -38,7 +38,7 @@ namespace SocketToPythonCS
             return resultStr;
         }
     }
-
+    /*
     class Program
     {
 
@@ -78,5 +78,5 @@ namespace SocketToPythonCS
             Console.Write("終了");
             Console.ReadKey();
         }
-    }
+    }*/
 }

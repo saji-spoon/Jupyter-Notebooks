@@ -50,16 +50,16 @@ class SimpleModel(Chain):
 def GetBoundary(txt, graphPrefix=""):
   bb2d = BinaryBoundary2D(300,300)
   bb2d.setDataset(txt.strip())
-  bb2d.train(SimpleModel(2), 0.02, 240)
+  bb2d.train(SimpleModel(2), 0.04, 120)
 
   mesh, pred = bb2d.getBoundary(0.015)
   cm = generate_cmap(['#FFFFFF', '#000000'])
-  plt.scatter(mesh[:,0], mesh[:,1], c=pred, cmap=cm)
+  #plt.scatter(mesh[:,0], mesh[:,1], c=pred, cmap=cm)
 
   cm = generate_cmap(['#EE5050', '#9090FF'])
-  plt.scatter(bb2d.trainPos[:,0], bb2d.trainPos[:,1], c=bb2d.trainT, cmap=cm)
+  #plt.scatter(bb2d.trainPos[:,0], bb2d.trainPos[:,1], c=bb2d.trainT, cmap=cm)
 
-  plt.savefig("plot_"+graphPrefix)
+  #plt.savefig("plot_"+graphPrefix)
 
   dataLen = pred.shape[0]
   preMatrix = np.empty((3, dataLen))
