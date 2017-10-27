@@ -1,0 +1,17 @@
+PythonServerセットアップ方法
+
+MLServerをコピー
+
+（環境のエクスポート
+conda env export > for_chainer_work.yaml
+
+さらにpipインストールの欄からchainer以外を削る
+）
+
+chainer環境をインポート
+
+conda env create --file  for_chainer_work.yaml
+
+テスト
+python PythonServer.py
+
