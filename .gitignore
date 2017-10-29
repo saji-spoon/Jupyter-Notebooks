@@ -242,9 +242,15 @@ ModelManifest.xml
 .fake/
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Byte-compiled / optimized / DLL files
 __pycache__/
 /__pycache__/
+=======
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+>>>>>>> Stashed changes
 =======
 
 # Byte-compiled / optimized / DLL files
