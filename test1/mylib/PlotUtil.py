@@ -54,13 +54,15 @@ def PlotLossAndAccuracy(out, log_name):
         
     tmp = plt.xlabel('epoch')
     tmp = plt.ylabel('loss')
-    tmp = plt.plot(arr_epoch, arr_train_loss)
-    tmp = plt.plot(arr_epoch, arr_test_loss)
+    tmp = plt.plot(arr_epoch, arr_train_loss, label='train loss')
+    tmp = plt.plot(arr_epoch, arr_test_loss, label='test loss')
+    plt.legend()
     plt.show()
 
     tmp = plt.xlabel('epoch')
     tmp = plt.ylabel('accuracy []')
-    tmp = plt.plot(arr_epoch, arr_train_accuracy)
-    tmp = plt.plot(arr_epoch, arr_test_accuracy)
+    tmp = plt.plot(arr_epoch, arr_train_accuracy, label='train accuracy')
+    tmp = plt.plot(arr_epoch, arr_test_accuracy, label='test accuracy')
+    plt.legend()
     plt.show()
 
