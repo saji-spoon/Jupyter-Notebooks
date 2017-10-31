@@ -10,9 +10,10 @@ from chainer.datasets import tuple_dataset
 import random
 
 class BinaryBoundary2D:
-    def __init__(self, width, height):
+    def __init__(self, width, height, model):
         self.width = width
         self.height = height
+        self.model = model
         
     def setDataset(self, datasetStr):
         self.rawTrainPos = []
@@ -28,7 +29,6 @@ class BinaryBoundary2D:
             idx = random.randrange(0, len(self.rawTrainPos))
             self.rawTestPos.append(self.rawTrainPos[idx])
             self.rawTestT.append(self.rawTrainT[idx])
-            
         self.trainPos, self.trainT = self.getNormalizedNpArray(self.rawTrainPos, self.rawTrainT)
         self.testPos, self.testT = self.getNormalizedNpArray(self.rawTestPos, self.rawTestT)
             
@@ -37,7 +37,13 @@ class BinaryBoundary2D:
         t = np.array(rawT, np.int32)
         return pos, t
     
-    def train(self, model, lr, maxEpoch):
+    def saveModel(fileName):
+        serializers.save_npz(fileName,self.model)
+    
+    def loadModel(fileName):
+        serializers.load_npz(fileName,self.model)
+
+    def train(self, lr, maxEpoch):
         trainSet = tuple_dataset.TupleDataset(self.trainPos, self.trainT)
         testSet = tuple_dataset.TupleDataset(self.testPos, self.testT)
         
@@ -45,7 +51,6 @@ class BinaryBoundary2D:
         testIter = iterators.SerialIterator(testSet, 1, repeat=False, shuffle=False)
         
         optimizer = optimizers.SGD(lr=lr)
-        self.model=model
         optimizer.setup(self.model)
         while trainIter.epoch < maxEpoch:
             #print(str(trainIter.epoch))
